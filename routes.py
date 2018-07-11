@@ -10,23 +10,20 @@ api_key = "4VjfD5UhQcCADQTeswWdXYEmSLVmuq"
 
 
 def cedi_to_oth(amount, curr):
-	currencies = {
-		"Dollars": "USD",
-		"Pounds": "GBP",
-		"Euros": "EUR"
-		}
-	urls = {
-		"Dollars": "https://www.amdoren.com/api/currency.php?api_key=" + api_key + "&from=GHS&to=" + currencies.values()[0] + "&amount=" + ,
-		"Pounds": "https://www.amdoren.com/api/currency.php?api_key=" + api_key + "&from=GHS&to=" + currencies.values()[1] + "&amount=" + ,
-		"Euros": "https://www.amdoren.com/api/currency.php?api_key=" + api_key + "&from=GHS&to=" + currencies.values()[2] + "&amount=" + 	    
-		}
+	currency1 = "USD"
+	currency2 = "GBP"
+	currency3 = "EUR"
 
-	if curr == currencies.values()[0]:
-		url = urls.values()[0]
-	elif curr == currencies.values()[1]:
-		url = urls.values()[1]
-	elif curr == currencies.values()[2]:
-		url = urls.values()[2]
+
+	if curr == currency1:
+		cur = currency1 
+		url = "https://www.amdoren.com/api/currency.php?api_key=" + api_key + "&from=GHS&to=" + cur + "&amount=" + amount
+	elif curr == currency2:
+		cur = currency2 
+		url = "https://www.amdoren.com/api/currency.php?api_key=" + api_key + "&from=GHS&to=" + cur + "&amount=" + amount
+	elif curr == currency3:
+		cur = currency1 
+		url = "https://www.amdoren.com/api/currency.php?api_key=" + api_key + "&from=GHS&to=" + cur + "&amount=" + amount
 	else:
 		print "Sorry please enter a valid option"
 
