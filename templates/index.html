@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- Search form -->
+<div class="container">
+	<div class="container-fluid text-center"> 
+		<form class="form-inline md-form mr-auto mb-4"  action = "http://localhost:5000/result" method="POST">
+			<input class="form-control mr-sm-2" type="float" placeholder="Amount in cedis" aria-label="Search" name="value">
+			<br>
+			<br>
+			<div class="form-group">
+			<label for="exampleFormControlSelect1">Currency</label>
+			<br>
+			<select class="form-control" name="currency">
+			  <option value="USD">US Dollars</option>
+			  <option value="GBP">British Pounds</option>
+			  <option value="EUR">Euros</option>
+			</select>
+			</div>
+			<br>
+			<br>		  
+			<button class="btn btn-elegant btn-rounded btn-sm my-0" type="submit" value="submit">Convert</button>
+		</form>
+	</div>
+</div><br>
+{% endblock %}
+
+
