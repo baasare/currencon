@@ -1,3 +1,4 @@
+import os
 from flask import Flask, render_template, request
 import json
 
@@ -32,7 +33,7 @@ def cedi_to_oth(amount, curr):
 	return str(json_d[u'amount'])
 	
 	 
-@app.route('/currencon.herokuapp.com')
+@app.route('/')
 def index():
   return render_template('index.html')
 
@@ -52,7 +53,11 @@ def res():
 			denom = "Error"
 		fresult = cedi_to_oth(value, currency)
 		return render_template('result.html', fresult = fresult, denom = denom)
-	
- 
-if __name__ == '__main__':
-  app.run(debug=True)
+
+
+
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
+#    app.run(debug=True, port=33507)
