@@ -32,7 +32,7 @@ def cedi_to_oth(amount, curr):
 	return str(json_d[u'amount'])
 	
 	 
-@app.route('/')
+@app.route('currencon.herokuapp.com/')
 def index():
   return render_template('index.html')
 
