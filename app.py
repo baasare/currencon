@@ -6,8 +6,7 @@ import json
 
 app = Flask(__name__)      
 
-
-api_key = "4VjfD5UhQcCADQTeswWdXYEmSLVmuq"
+api_key = "8340ff249a51feb83b693155805ec4d3"
 
 
 def cedi_to_oth(amount, curr):
@@ -18,16 +17,17 @@ def cedi_to_oth(amount, curr):
 
 	if curr == currency1:
 		cur = currency1 
-		url = "https://www.amdoren.com/api/currency.php?api_key=" + api_key + "&from=GHS&to=" + cur + "&amount=" + amount
+		url = "http://data.fixer.io/api/convert?access_key=" + api_key + "&from=GHS&to=" + cur + "&amount=" + amount
 	elif curr == currency2:
 		cur = currency2 
-		url = "https://www.amdoren.com/api/currency.php?api_key=" + api_key + "&from=GHS&to=" + cur + "&amount=" + amount
+		url = "http://data.fixer.io/api/convert?access_key=" + api_key + "&from=GHS&to=" + cur + "&amount=" + amount
 	elif curr == currency3:
 		cur = currency1 
-		url = "https://www.amdoren.com/api/currency.php?api_key=" + api_key + "&from=GHS&to=" + cur + "&amount=" + amount
+		url = "http://data.fixer.io/api/convert?access_key=" + api_key + "&from=GHS&to=" + cur + "&amount=" + amount
 	else:
 		print "Sorry please enter a valid option"
-
+		
+		
 	q = requests.get(url)
 	json_d = q.json()
 
