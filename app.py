@@ -20,8 +20,7 @@ list_of_currencies = sorted(currencies_d.keys())
 
 
 def cedi_to_oth(amount, curr):
-	url = "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=GHS&to_currency=" + \
-	    curr + "&apikey=SDX6VUX5ZH5RBERM"
+	url = "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=GHS&to_currency=" + curr + "&apikey=SDX6VUX5ZH5RBERM"
 
 	q = requests.get(url)
 	json_d = q.json()
