@@ -4,7 +4,7 @@ import requests
 import json
 import xlrd
 
-app = Flask(__name__)      
+app = Flask(__name__)
 
 
 currencies_d = {}
@@ -16,11 +16,12 @@ for i in range(156):
     name = str(sh.cell(i, 1).value)
     currencies_d[name] = code
 
-list_of_currencies = currencies_d.keys()
+list_of_currencies = sorted(currencies_d.keys())
 
 
 def cedi_to_oth(amount, curr):
-	url = "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=GHS&to_currency=" + curr + "&apikey=SDX6VUX5ZH5RBERM"
+	url = "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=GHS&to_currency=" + \
+	    curr + "&apikey=SDX6VUX5ZH5RBERM"
 
 	q = requests.get(url)
 	json_d = q.json()
@@ -50,9 +51,7 @@ def res():
 		currency = currencies_d[currency_name]
 
 		fresult = cedi_to_oth(value, currency)
-		return render_template('result.html', fresult=fresult, currency_name=currency_name)
-
-
+		return render_template('result.html', fresult=fresult, denom=currency_name)
 
 
 if __name__ == "__main__":
