@@ -6,7 +6,15 @@ import json
 
 app = Flask(__name__)      
 
-api_key = "8340ff249a51feb83b693155805ec4d3"
+
+
+api_key = "SDX6VUX5ZH5RBERM"
+
+#"https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=GHS&to_currency=USD&apikey=SDX6VUX5ZH5RBERM"
+
+
+
+
 
 
 def cedi_to_oth(amount, curr):
@@ -17,21 +25,30 @@ def cedi_to_oth(amount, curr):
 
 	if curr == currency1:
 		cur = currency1 
-		url = "http://data.fixer.io/api/convert?access_key=" + api_key + "&from=GHS&to=" + cur + "&amount=" + amount
+		url = "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=GHS&to_currency=" + cur + "&apikey=" + api_key
 	elif curr == currency2:
 		cur = currency2 
-		url = "http://data.fixer.io/api/convert?access_key=" + api_key + "&from=GHS&to=" + cur + "&amount=" + amount
+		url = "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=GHS&to_currency=" + cur + "&apikey=" + api_key
 	elif curr == currency3:
 		cur = currency1 
-		url = "http://data.fixer.io/api/convert?access_key=" + api_key + "&from=GHS&to=" + cur + "&amount=" + amount
+		url = "https://www.alphavantage.co/query?function=CURRENCY_EXCHANGE_RATE&from_currency=GHS&to_currency=" + cur + "&apikey=" + api_key
 	else:
 		print "Sorry please enter a valid option"
-		
-		
+
 	q = requests.get(url)
 	json_d = q.json()
+	json_d = json_d.values()
+	json_d = json_d[0]
+	json_d = json_d.values()
+	rate = json_d[4]
+	rate = rate.encode("ascii", "replace")
+	rate = float(rate)
 
-	return str(json_d[u'amount'])
+	converted_amount = rate * float(amount)
+	converted_amount = round(converted_amount, 2)
+
+
+	return str(converted_amount)
 	
 	 
 @app.route('/')
