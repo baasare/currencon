@@ -26,9 +26,7 @@ def cedi_to_oth(amount, curr):
 	json_d = q.json()
 	json_d = json_d.values()
 	json_d = json_d[0]
-	json_d = json_d.values()
-	rate = json_d[3]
-	print rate
+	rate = json_d["5. Exchange Rate"]
 	rate = rate.encode("ascii", "replace")
 	rate = float(rate)
 
