@@ -51,7 +51,7 @@ def res():
 		currency = currencies_d[currency_name]
 
 		fresult = cedi_to_oth(value, currency)
-		return render_template('result.html', fresult=fresult, denom=currency_name)
+		return render_template('result.html', fresult=fresult, currency_name=currency_name)
 
 
 if __name__ == "__main__":
