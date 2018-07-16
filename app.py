@@ -27,7 +27,8 @@ def cedi_to_oth(amount, curr):
 	json_d = json_d.values()
 	json_d = json_d[0]
 	json_d = json_d.values()
-	rate = json_d[4]
+	rate = json_d[3]
+	print rate
 	rate = rate.encode("ascii", "replace")
 	rate = float(rate)
 
@@ -50,7 +51,7 @@ def res():
 		currency = currencies_d[currency_name]
 
 		fresult = cedi_to_oth(value, currency)
-		return render_template('result.html', fresult=fresult, denom=currency_name)
+		return render_template('result.html', fresult=fresult, currency_name=currency_name)
 
 
 if __name__ == "__main__":
