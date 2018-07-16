@@ -32,7 +32,7 @@ def cedi_to_oth(amount, curr):
 
 	converted_amount = rate * float(amount)
 	converted_amount = round(converted_amount, 2)
-
+ 
 	return str(converted_amount)
 
 
